@@ -1,0 +1,9 @@
+{
+  "name": "document-understanding-ui",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "node ./node_modules/vite/bin/vite.js --host 0.0.0.0", "build": "node scripts/build.mjs", "preview": "node ./node_modules/vite/bin/vite.js preview --host 0.0.0.0", "format:check": "node ./node_modules/prettier/bin/prettier.cjs --check index.html src vite.config.ts" },
+  "dependencies": { "@vitejs/plugin-react": "latest", "vite": "latest", "typescript": "latest", "react": "latest", "react-dom": "latest", "lucide-react": "^0.468.0" },
+  "devDependencies": { "@types/react": "latest", "@types/react-dom": "latest", "prettier": "latest" }
+}

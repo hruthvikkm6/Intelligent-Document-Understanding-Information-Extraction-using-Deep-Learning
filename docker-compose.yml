@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: document_db
+      POSTGRES_USER: document_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_demo_password}
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U document_user -d document_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://document_user:${POSTGRES_PASSWORD:-local_demo_password}@db:5432/document_db
+      UPLOAD_DIR: /app/data/uploads
+      ENABLE_DONUT: ${ENABLE_DONUT:-true}
+      CORS_ORIGINS: http://localhost:5173
+    volumes: ["uploads:/app/data/uploads", "model_cache:/root/.cache/huggingface"]
+    ports: ["8000:8000"]
+    depends_on:
+      db: {condition: service_healthy}
+  frontend:
+    build: ./frontend
+    ports: ["5173:80"]
+    depends_on: [backend]
+volumes:
+  postgres_data:
+  uploads:
+  model_cache:

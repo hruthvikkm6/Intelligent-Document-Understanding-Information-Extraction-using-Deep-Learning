@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "document": "clean_invoice.png",
+  "expected_visible_content": {
+    "vendor_name": "NORTHSTAR OFFICE SUPPLIES",
+    "invoice_number": "NS-2026-1042",
+    "invoice_date": "2026-11-18",
+    "due_date": "2026-12-18",
+    "currency": "INR",
+    "subtotal": 45000.0,
+    "tax": 8100.0,
+    "total": 53100.0
+  },
+  "note": "Ground truth describes text printed on the synthetic sample only; pretrained model outputs are not guaranteed to match it."
+}

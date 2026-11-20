@@ -1,0 +1,13 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.db
+data/
+backend/test-uploads/
+backend/test-documents.db
+frontend/node_modules/
+frontend/dist/
+*.log
+*.tsbuildinfo
